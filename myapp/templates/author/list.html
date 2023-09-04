@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="display-5 my-3">
+        Authors
+    </h1>
+        {% for author in object_list %}
+            <div class="card my-2">
+                <div class="card-body">
+                    <div class="card-title">{{ author.name }}</div>
+                    {% if author.bio != None %}
+                        <div class="card-text"> {{ author.bio }}</div>
+                    {% endif %}
+                    
+                    <a href="{% url 'author_view' author.id %}" class="btn btn-primary btn-sm">View</a>
+                    <a href="{% url 'author_update' author.id %}" class="btn btn-secondary btn-sm">Edit</a> 
+                    <a href="{% url 'author_delete' author.id %}" class="btn btn-warning btn-sm">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="pagination d-flex justify-content-end">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="btn btn-secondary">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">previous</a>
+                {% endif %}
+        
+                <span class="current" class="display-5 my-2">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-secondary">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+{% endblock content %}

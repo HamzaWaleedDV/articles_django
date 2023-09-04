@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>
+        {{ author.name }}
+    </h1>
+    <h4>
+        Email: {{ author.email }}
+        <br>
+        Bio: {{ author.bio }}
+        <br>
+        Birthdate: {{ author.birthdate }}
+        <br>
+    </h4>
+
+{% endblock content %}

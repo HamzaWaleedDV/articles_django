@@ -1,0 +1,16 @@
+<h1>
+    Hello {% if name %} {{ name }} {% else %} World! {% endif %}
+</h1>
+
+<ul>
+    {% for category in categories reversed %}
+        <li>{{ category }}</li>
+    {% empty %}
+    <p>No categories!</p>
+    {% endfor %}
+</ul>
+
+<p>{{'learn code easily'|title}}</p>
+{% if message|length >= 100 %}
+    <p>You have lots of message</p>
+{% endif %}
